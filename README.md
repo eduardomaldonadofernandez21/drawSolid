@@ -15,7 +15,7 @@ Se ha hecho una pantalla inicial explicando los controles de como se dibujar el 
 
 ## Organización del código
 
-<p style=”text-align: justify;”>Primero establecemos unas variables globales: declaramos unas variables booleanas que nos indicaran cuando se ha hecho el primer click derecho del ratón para empezar a recoger los puntos del perfil, una segunda variable booleana que nos avisa cuando se deba mostrar el sólido de revolución y otra variable booleanada que nos indica cuando se esta mostrando el menu de los controles.</p>.
+<p style=”text-align: justify;”>Primero establecemos unas variables globales: declaramos unas variables booleanas que nos indicaran cuando se ha hecho el primer click derecho del ratón para empezar a recoger los puntos del perfil, una segunda variable booleana que nos avisa cuando se deba mostrar el sólido de revolución y otra variable booleanada que nos indica cuando se esta mostrando el menu de los controles.</p>
 Después, existe una variable que es un arraylist de <PVector> que se recogen todas las posiciones clickadas por el usuario para el perfil del sólido. Además de los PShape para mostrar el perfil del sólido de revolución y el propio solido.
 
 En la función setup() establecemos el tamaño de la pantalla, y diversos valores de las variables globales explicados anteriormente.
