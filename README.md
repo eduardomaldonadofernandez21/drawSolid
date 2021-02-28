@@ -11,34 +11,28 @@ Se ha realizado un programa en processing que crear un prototipo que recoja punt
 con el ratón sobre la pantalla. Sus controles son: con el click derecho del mouse se va marcando los puntos en la pantalla derecha para hacer el sólido, el click izquierdo resetear todos los puntos recogidos para volver a empezar a hacer el prototipo, con la tecla 's' se hace el sólido de revolución con los puntos recogidos hasta ese momento y con la tecla 'ENTER' se puede ver todos los controles necesarios explicados anteriormente.
 
 ## Descripción
-
+Se ha hecho una pantalla inicial explicando los controles de como se dibujar el perfil del sólido y su posterior creación. Después, en el proceso de hacer el perfil del sólido, se ha dividido la pantalla a la mitad para que se pueda dibujar correctamente en el lado derecho. A continuación, cuando se crear el sólido de revolucion se muestra la figura y se puede mover a la vez que se mueve el mouse.
 
 ## Organización del código
 
-<p style=”text-align: justify;”>Primero establecemos unas variables globales: para la posición de la bola y su movimiento en el ejeX y ejeY, así como las posiciones de las paletas y su tamaño, necesitaremos obtener sus coordenadas. También, establecemos como globales los valores de los marcadores, así como dos variables booleanas que se activará cuando se pausa la partida o se marca un gol para que haya un nuevo saque inicial.</p>
+<p style=”text-align: justify;”>Primero establecemos unas variables globales: declaramos unas variables booleanas que nos indicaran cuando se ha hecho el primer click derecho del ratón para empezar a recoger los puntos del perfil, una segunda variable booleana que nos avisa cuando se deba mostrar el sólido de revolución y otra variable booleanada que nos indica cuando se esta mostrando el menu de los controles.</p>.
+Después, existe una variable que es un arraylist de <PVector> que se recogen todas las posiciones clickadas por el usuario para el perfil del sólido. Además de los PShape para mostrar el perfil del sólido de revolución y el propio solido.
 
-
-En la función setup() establecemos el tamaño de la pantalla, y diversos valores de las variables globales como son coordenadas de los jugadores y la bola, como cargamos los sonidos correspondientes.
+En la función setup() establecemos el tamaño de la pantalla, y diversos valores de las variables globales explicados anteriormente.
 
 A partir de la función draw() llamaremos a una serie de funciones que explicamos su utilidad:
 
-- **pantallaInicio():** Con este función, se mostrará el menú de pausa e inicial donde se explica los controles de teclado para jugar.
+- **drawControl():** Con este función, se mostrará el menú de controles e inicial donde se explica los controles de teclado para dibujar el sólido.
 
--	**posicionesSaquePlayer():** En caso de gol, las paletas de los jugadores vuelven a su posición inicial en el medio del ejeY para que no tenga ningún tipo de dificultad al procederse con el saque de partida.
+-	**mousePressed():** Cuando se clicke tanto el click derecho como el izquierdo, esta función se llamara, en caso de que sea click derecho se va guardando los puntos escogidos por el usuario en la pantalla. Por el contrario si es el click izquierdo, se limpia el arraylist de las posiciones recogidas y se reinicia la pantalla.
 
--	**keyPressed():** Cuando se pulsa las teclas de los jugadores (teclas UP-DOWN o teclas ‘s’-‘w’) se cambian las coordenadas del ejeY de las paletas. Sin embargo, con la tecla ‘P’ se procede a empezar una partida cambiando la variable booleana ‘pausaGame’ o a pausar una partida. 
+-	**keyPressed():** Cuando se pulsa las teclas para mostrar el sólido de revolución (tecla 's' o tecla 'S') o el 'ENTER' para mostrar los controles o empezar a dibujar el perfil. 
 
--	**keyReleased():** Al dejar de presionar una tecla, se queda en la posición actual las paletas correspondientes.
+-	**drawPerfilSolido():** Se llama a los distintos métodos del Pshape del objPerfil y vamos dibujando el perfil con los puntos recogidos en el arraylist y lo mostramos por pantalla.
 
--	**controlPlayers():** Para que las paletas de los jugadores no se sobresalgan de la pantalla, existe una serie de controles tanto por la zona superior e inferior para que se visualice por pantalla.
+-	**drawSolidoRevolucion():** Con esta función creamos el sólido de revolución, para ellos creamos una figura que nos dibuje los triangulos con "beginShape(TRIANGLE_STRIP), ahora tenemos que calcular la rotación de los puntos del perfil que estan en 2D para que sea 3D, por lo que es necesario recorrer todos los vertices del perfil y para cada uno de ellos calcularemos su posición desde 0º hasta 360º.
 
--	**controlBall():** Comprobamos si la bola colisiona con algunas de las paredes. En caso de que colisione con la pared superior o inferior, simplemente cambia las coordenadas invirtiendo el símbolo de la coordenada del movimiento de la pelota. Si choca contra la pared de la derecha o izquierda, significa que se ha producido un gol, por lo que habrá que empezar un nuevo saque inicial.
-
--	**detectBallByPlayer():** Cuando la pelota choca contra una de las paletas de los jugadores, el movimiento de la pelota cambia su dirección dirigiéndose hacia el otro campo del rival.
-
--	**marcador():** Sitúa un marcador en la zona superior de la pantalla indicando cuantos goles lleva cada jugador.
-
--	**mitadCampo():** Dibuja la línea discontinua en la mitad de la pantalla que hacer una separación entre ambos campos de cada jugador.
+-	**rotacionPoints():** Mediante esta función llamada anteriormente en la función drawSolidoRevolucion, recibe como parametros los puntos del perfil de un vertice y un angulo para desplazarse y calculamos para los puntos X e Z su valor correspondiente para ese angulo en 3D.
 
 ## Descarga e instalación
-Para poder probar MyPong es necesario descargar todos los archivos del repositorio debido a que la carpeta Data contiene las fuentes de las letras utilizadas y los archivos *.wav son los sonidos correspondientes del juego.
+Para poder probar este programa es necesario descargar el fichero drawFigure.pde
