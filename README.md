@@ -12,6 +12,7 @@ con el ratón sobre la pantalla. Sus controles son: con el click derecho del mou
 
 ## Descripción
 Se ha hecho una pantalla inicial explicando los controles de como se dibujar el perfil del sólido y su posterior creación. Después, en el proceso de hacer el perfil del sólido, se ha dividido la pantalla a la mitad para que se pueda dibujar correctamente en el lado derecho. A continuación, cuando se crear el sólido de revolucion se muestra la figura y se puede mover a la vez que se mueve el mouse.
+![Ejemplo de sólido de revolución](/example.gif "Ejemplo de sólido de revolución")
 
 ## Organización del código
 
